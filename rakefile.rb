@@ -110,19 +110,19 @@ task :test => [:unit_test]
 
 desc "Runs unit tests"
 task :unit_test => :compile do
-  runner = NUnitRunner.new :compilemode => COMPILE_TARGET, :source => 'src', :platform => 'x86'
+  runner = NUnitRunnerCustom.new :compilemode => COMPILE_TARGET, :source => 'src', :platform => 'x86'
   runner.executeTests ['FubuMVC.Tests', 'FubuMVC.SelfHost.Testing', 'FubuMVC.StructureMap.Testing', 'FubuMVC.Autofac.Testing', 'FubuMVC.OwinHost.Testing']
 end
 
 desc "Runs some of the unit tests for Mono"
 task :mono_unit_test => :compile do
-  runner = NUnitRunner.new :compilemode => COMPILE_TARGET, :source => 'src', :platform => 'x86'
+  runner = NUnitRunnerCustom.new :compilemode => COMPILE_TARGET, :source => 'src', :platform => 'x86'
   runner.executeTests ['FubuMVC.Tests', 'FubuMVC.StructureMap.Testing', 'FubuMVC.Autofac.Testing', 'FubuMVC.OwinHost.Testing']
 end
 
 desc "Runs the integration tests"
 task :integration_test => :compile do
-  runner = NUnitRunner.new :compilemode => COMPILE_TARGET, :source => 'src', :platform => 'x86'
+  runner = NUnitRunnerCustom.new :compilemode => COMPILE_TARGET, :source => 'src', :platform => 'x86'
   runner.executeTests ['FubuMVC.IntegrationTesting']
 end
 
@@ -141,4 +141,15 @@ def self.bottles(args)
   sh "#{bottles} #{args}"
 end
 
+class NUnitRunnerCustom < NUnitRunner
+  include FileTest
 
+  def initialize(paths)
+    @sourceDir = paths.fetch(:source, 'source')
+    @resultsDir = paths.fetch(:results, 'results')
+    @compilePlatform = paths.fetch(:platform, '')
+    @compileTarget = paths.fetch(:compilemode, 'debug')
+  
+    @nunitExe = Nuget.tool("NUnit.Runners", "nunit-console#{(@compilePlatform.empty? ? '' : "-#{@compilePlatform}")}.exe") + Platform.switch("nothread")
+  end
+end

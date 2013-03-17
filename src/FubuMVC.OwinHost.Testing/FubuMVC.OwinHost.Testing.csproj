@@ -54,10 +54,10 @@
       <HintPath>..\packages\Microsoft.Owin.Hosting.0.18-alpha\lib\Microsoft.Owin.Hosting.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
-      <HintPath>..\packages\NUnit.2.5.10.11092\lib\nunit.framework.dll</HintPath>
+      <HintPath>..\packages\NUnit.2.6.2\lib\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="nunit.mocks">
-      <HintPath>..\packages\NUnit.2.5.10.11092\lib\nunit.mocks.dll</HintPath>
+      <HintPath>..\packages\NUnit.2.6.2\lib\nunit.mocks.dll</HintPath>
     </Reference>
     <Reference Include="Owin">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
@@ -66,7 +66,7 @@
       <HintPath>..\packages\Owin.Extensions.0.6.4\lib\net40\Owin.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="pnunit.framework">
-      <HintPath>..\packages\NUnit.2.5.10.11092\lib\pnunit.framework.dll</HintPath>
+      <HintPath>..\packages\NUnit.Runners.2.6.2\tools\pnunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="Rhino.Mocks">
       <HintPath>..\packages\RhinoMocks.3.6.1\lib\net\Rhino.Mocks.dll</HintPath>
@@ -118,10 +118,6 @@
       <Project>{E18FD922-0E7A-49CD-B89F-473826077B9D}</Project>
       <Name>FubuMVC.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\FubuMVC.Core\FubuMVC.Core.csproj">
-      <Project>{E18FD922-0E7A-49CD-B89F-473826077B9D}</Project>
-      <Name>FubuMVC.Core</Name>
-    </ProjectReference>
     <ProjectReference Include="..\FubuMVC.Katana\FubuMVC.Katana.csproj">
       <Project>{48BC51C2-B759-48DB-AAE1-F4686CD6D02A}</Project>
       <Name>FubuMVC.Katana</Name>
@@ -129,10 +125,6 @@
     <ProjectReference Include="..\FubuMVC.OwinHost\FubuMVC.OwinHost.csproj">
       <Project>{EA10DF80-FD95-4172-BC18-DB0DFB279844}</Project>
       <Name>FubuMVC.OwinHost</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\FubuMVC.StructureMap\FubuMVC.StructureMap.csproj">
-      <Project>{ABFEA520-820C-4B77-9015-6A09E24252FA}</Project>
-      <Name>FubuMVC.StructureMap</Name>
     </ProjectReference>
     <ProjectReference Include="..\FubuMVC.StructureMap\FubuMVC.StructureMap.csproj">
       <Project>{ABFEA520-820C-4B77-9015-6A09E24252FA}</Project>
