@@ -142,7 +142,14 @@ def self.bottles(args)
 end
 
 class NUnitRunnerCustom < NUnitRunner
-  include FileTest
+  def executeTests(assemblies)
+    Dir.mkdir @resultsDir unless exists?(@resultsDir)
+    
+    assemblies.each do |assem|
+      file = File.expand_path("#{@sourceDir}/#{assem}/bin/#{@compileTarget}/#{assem}.dll")
+      sh Platform.runtime((!RUBY_PLATFORM.match("linux|darwin").nil? ? "-O=-gshared " : "") + "#{@nunitExe} -xml=#{@resultsDir}/#{assem}-TestResults.xml \"#{file}\"")
+    end
+  end
 
   def initialize(paths)
     @sourceDir = paths.fetch(:source, 'source')
